@@ -19,6 +19,13 @@ class LogWriter(object):
 	@staticmethod
 	def avg_every_second_element(data):
 		#2
+		every_second_element = get_every_second_element(data)
+		for elem in every_second_element:
+			aver +=elem
+		ever /= len(every_second_element)
+		return ever
+
+
 		#return the average of every second element 
 		#(use function get_every_second_element )
 		#e.g:
