@@ -43,7 +43,10 @@ class LogWriter(object):
 		#Count occurances of character 'o' in text
 		#e.g.:
 		# count_o("oOo0O00o") == 5
-		pass
+		if isinstance(text, str):
+			return text.count("o")
+		else:
+			raise TypeError("Invalid type, argument must be string")
 
 	def get_first_part(self):
 		#5
