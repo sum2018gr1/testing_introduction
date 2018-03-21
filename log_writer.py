@@ -38,7 +38,7 @@ class LogWriter(object):
 		l_index = text.find("list")
 		r_index = text.rfind("list")		
 		if	not l_index == -1 and l_index == r_index:
-			result = "{}{} {}".format(text[:l_index], str(data),text[l_index:])
+			result = "{}({}) {}".format(text[:l_index], str(data),text[l_index:])
 			return result		
 		else:
 			return text		
