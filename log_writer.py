@@ -7,19 +7,31 @@ class LogWriter(object):
 		#7
 		#save list_data and head_text as members of this object
 		# create member o_count with value None
-		pass
+		self.list_data = list_data
+		self.head_text = head_text
+		self.o_count = None
 
 	@staticmethod
 	def get_every_second_element(data):
 		#1
 		# return every second element (counting from index 1) from passed list
 		# e.g. get_every_second_element([1,2,3,4]) == [2,4]
+		return data[1::2]
 		pass
 
 	@staticmethod
 	def avg_every_second_element(data):
 		#2
+		every_second_element = get_every_second_element(data)
+		for elem in every_second_element:
+			aver +=elem
+		ever /= len(every_second_element)
+		return ever
+
+
+		#return the average of every second element 
 		#return the average of every second element
+
 		#(use function get_every_second_element )
 		#e.g:
 		# avg_every_second_element([1,2,3,4]) == 3.0
@@ -64,22 +76,31 @@ class LogWriter(object):
 		#Set member o_count with number of o's in contained
 		# in text you created above - use count_o.
 		# Return newly created text AND value of o_count
-		pass
+		text = self.head_text 
+		text += "_________"
+		text += "\n After change: \n"
+		text += insert_data_in_text(self.head_text, self.list_data)
+		self.count_o = count_o(self.head_text)
+		return (text, self.o_count)
 
 	@staticmethod
-	def what_is_added_the_meaning_of_life(add):
+	def what_is_added_the_meaning_of_life(add = None):
 		#6
 		#return square root of 42 PLUS add
 		# if add is not given return 42
 		#
-		pass
+		if add == None:
+			return math.sqrt(42)
+		
+		return math.sqrt(42 + add)
+
 
 	@staticmethod
 	def what_is_your_quest(quest="holy grail"):
 		#8
 		# if the argument is not specified return "To seek the holy grail"
 		# in other case append the texts "To seek the " with argument and return
-		pass
+		return "To seek the {}".format(quest)
 
 	@staticmethod
 	def get_second_word(text):
@@ -134,7 +155,12 @@ class LogWriter(object):
 		# - string "0 O 0 O 0 O 0 O 0 O 0 O"
 		# - output of get_second_part applied on computation method (class member)
 		#return the concatenation
-		pass
+		result = str(self.get_first_part())
+		result += '0 O 0 O 0 O 0 O 0 O 0 O'
+		result += str(self.get_second_part())
+
+		return result
+		
 
 	def __str__(self):
 		return self.combining_method()
