@@ -7,7 +7,9 @@ class LogWriter(object):
 		#7
 		#save list_data and head_text as members of this object
 		# create member o_count with value None
-		pass
+		self.list_data = list_data
+		self.head_text = head_text
+		self.o_count = None
 
 	@staticmethod
 	def get_every_second_element(data):
@@ -74,7 +76,12 @@ class LogWriter(object):
 		#Set member o_count with number of o's in contained
 		# in text you created above - use count_o.
 		# Return newly created text AND value of o_count
-		pass
+		text = self.head_text 
+		text += "_________"
+		text += "\n After change: \n"
+		text += insert_data_in_text(self.head_text, self.list_data)
+		self.count_o = count_o(self.head_text)
+		return (text, self.o_count)
 
 	@staticmethod
 	def what_is_added_the_meaning_of_life(add = None):
