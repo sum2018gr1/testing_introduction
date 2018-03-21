@@ -12,13 +12,14 @@ class LogWriter(object):
 	@staticmethod
 	def get_every_second_element(data):
 		#1
-		# return every second element (counting from index 1) from passed list 
+		# return every second element (counting from index 1) from passed list
 		# e.g. get_every_second_element([1,2,3,4]) == [2,4]
 		pass
 
 	@staticmethod
 	def avg_every_second_element(data):
 		#2
+<<<<<<< HEAD
 		every_second_element = get_every_second_element(data)
 		for elem in every_second_element:
 			aver +=elem
@@ -27,6 +28,9 @@ class LogWriter(object):
 
 
 		#return the average of every second element 
+=======
+		#return the average of every second element
+>>>>>>> 2ab902305529a892d562c2b58dc0c60a019ee1e9
 		#(use function get_every_second_element )
 		#e.g:
 		# avg_every_second_element([1,2,3,4]) == 3.0
@@ -50,15 +54,18 @@ class LogWriter(object):
 		#Count occurances of character 'o' in text
 		#e.g.:
 		# count_o("oOo0O00o") == 5
-		pass
+		if isinstance(text, str):
+			return text.count("o")
+		else:
+			raise TypeError("Invalid type, argument must be string")
 
 	def get_first_part(self):
 		#5
 		#append head_text (member of this object) with string
 		#"_________" followed by "\n After change: \n"
-		# append the output of insert_data_in_text applied 
+		# append the output of insert_data_in_text applied
 		#on head_text and list_data (members of this object).
-		#Set member o_count with number of o's in contained 
+		#Set member o_count with number of o's in contained
 		# in text you created above - use count_o.
 		# Return newly created text AND value of o_count
 		pass
@@ -67,7 +74,7 @@ class LogWriter(object):
 	def what_is_added_the_meaning_of_life(add):
 		#6
 		#return square root of 42 PLUS add
-		# if add is not given return 42 
+		# if add is not given return 42
 		#
 		pass
 
@@ -97,7 +104,7 @@ class LogWriter(object):
 		#11
 		#this is the tough one
 		#use o_count is even (use o_count_is_even())
-		#If o_count is even set output of this function 
+		#If o_count is even set output of this function
 		#to value of what_is_added_the_meaning_of_life applied on o_count
 		#If o_count is odd setoutput to be the value of what_is_your_quest applied on
 		#the second word of head_text (member of this object).
@@ -108,20 +115,19 @@ class LogWriter(object):
 
 	@staticmethod
 	def computation(x):
-		#12
-		# return the the sum of:
-		# x to the second power
-		# square root of x
-		# square root of the square root of x
-		pass
+		ret = x ** 2
+		ret += math.sqrt(x)
+		ret += math.sqrt(math.sqrt(x))
+
+		return ret
 
 	def get_second_part(self, computation=None):
 		#13
 		# append the:
-		# - new line 
-		# and 
+		# - new line
+		# and
 		# - the value of function computation (in argument)
-		# applied on number 47 
+		# applied on number 47
 		# to the output of get_movie_reference
 		pass
 
@@ -152,7 +158,7 @@ if __name__=="__main__":
 
 Stil liist shilts list 1ist tilst iist l1ist? 'WHAT DID THE 0NE SNO0WMAN SAY TO THE OTHER SNOWMAN? 00O0O'
 _________
- After change: 
+ After change:
 
 Stil liist shilts list ([1, 2, 34, 4]) 1ist tilst iist l1ist? 'WHAT DID THE 0NE SNO0WMAN SAY TO THE OTHER SNOWMAN? 00O0O'
 0 O 0 O 0 O 0 O 0 O 0 O7.34846922835
