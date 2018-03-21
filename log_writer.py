@@ -54,7 +54,12 @@ class LogWriter(object):
 		#Set member o_count with number of o's in contained 
 		# in text you created above - use count_o.
 		# Return newly created text AND value of o_count
-		pass
+		text = self.head_text 
+		text += "_________"
+		text += "\n After change: \n"
+		text += insert_data_in_text(self.head_text, self.list_data)
+		self.count_o = count_o(self.head_text)
+		return (text, self.o_count)
 
 	@staticmethod
 	def what_is_added_the_meaning_of_life(add):
