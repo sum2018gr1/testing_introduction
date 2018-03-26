@@ -16,17 +16,15 @@ class LogWriter(object):
 		#1
 		# return every second element (counting from index 1) from passed list
 		# e.g. get_every_second_element([1,2,3,4]) == [2,4]
-		return data[1::2]
-		pass
+		return data[1::2]		
 
 	@staticmethod
 	def avg_every_second_element(data):
 		#2
-		every_second_element = get_every_second_element(data)
-		for elem in every_second_element:
-			aver +=elem
-		ever /= len(every_second_element)
-		return ever
+		every_second_element = LogWriter.get_every_second_element(data)
+		sum_of_all_elements = sum(every_second_element)
+		average = sum_of_all_elements / len(every_second_element)
+		return average
 
 
 		#return the average of every second element 
@@ -35,7 +33,6 @@ class LogWriter(object):
 		#(use function get_every_second_element )
 		#e.g:
 		# avg_every_second_element([1,2,3,4]) == 3.0
-		pass
 
 	@staticmethod
 	def insert_data_in_text(text, data):
@@ -50,7 +47,7 @@ class LogWriter(object):
 		l_index = text.find("list")
 		r_index = text.rfind("list")		
 		if not l_index == -1 and l_index == r_index:
-			result = "{}({}) {}".format(text[:l_index+4], str(data),text[l_index+4:])
+			result = "{} ({}){}".format(text[:l_index+4], str(data),text[l_index+4:])
 			return result		
 		else:
 			return text		
@@ -63,7 +60,7 @@ class LogWriter(object):
 		#e.g.:
 		# count_o("oOo0O00o") == 5
 		if isinstance(text, str):
-			return text.count("o")
+			return text.count("o") + text.count("O")
 		else:
 			raise TypeError("Invalid type, argument must be string")
 
@@ -79,8 +76,8 @@ class LogWriter(object):
 		text = self.head_text 
 		text += "_________"
 		text += "\n After change: \n"
-		text += insert_data_in_text(self.head_text, self.list_data)
-		self.count_o = count_o(self.head_text)
+		text += LogWriter.insert_data_in_text(self.head_text, self.list_data)
+		self.o_count = LogWriter.count_o(text)
 		return (text, self.o_count)
 
 	@staticmethod
@@ -113,12 +110,14 @@ class LogWriter(object):
 		#10
 		# return True if o_count is even
 		# return False is o_count is odd
-		if (self.o_count % 2 == 0 ):
-			return True
-		else:
+		if self.o_count == None:
+			self.o_count = 1
+		if self.o_count % 2 != 0:
 			return False
+		else:
+			return True
 
-	def get_movie_reference(self):
+	def get_movie_reference(self, roundMovie = False):
 		#11
 		#this is the tough one
 		#use o_count is even (use o_count_is_even())
@@ -129,7 +128,17 @@ class LogWriter(object):
 		#Lastly if o_count is higher than seven append empty line and
 		#empty call of what_is_your_quest to the output.
 		#Return the output
-		pass
+		output = ""
+		if self.o_count_is_even():
+			output_number = round(self.what_is_added_the_meaning_of_life(self.o_count), 11) if roundMovie else (self.what_is_added_the_meaning_of_life(self.o_count))
+			output += "{}".format(output_number)
+		else:
+			output += self.what_is_your_quest(self.get_second_word(self.head_text))
+
+		if self.o_count > 7:
+			output += "\n" + self.what_is_your_quest()
+
+		return output
 
 	@staticmethod
 	def computation(x):
@@ -139,7 +148,7 @@ class LogWriter(object):
 
 		return ret
 
-	def get_second_part(self, computation=None):
+	def get_second_part(self, computation=None, roundMovie = False):
 		#13
 		# append the:
 		# - new line
@@ -147,7 +156,12 @@ class LogWriter(object):
 		# - the value of function computation (in argument)
 		# applied on number 47
 		# to the output of get_movie_reference
-		pass
+		output = self.get_movie_reference(roundMovie)
+		if computation != None:
+			output += "\n"
+			output += "{}".format(round(computation(47), 7))
+
+		return output
 
 	def combining_method(self):
 		#14
@@ -156,9 +170,9 @@ class LogWriter(object):
 		# - string "0 O 0 O 0 O 0 O 0 O 0 O"
 		# - output of get_second_part applied on computation method (class member)
 		#return the concatenation
-		result = str(self.get_first_part())
+		result = self.get_first_part()[0]
 		result += '0 O 0 O 0 O 0 O 0 O 0 O'
-		result += str(self.get_second_part())
+		result += str(self.get_second_part(LogWriter.computation, True))
 
 		return result
 		
